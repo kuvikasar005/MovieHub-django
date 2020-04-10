@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  <title>{{movie.name}}</title>
+{% endblock %}
+
+{% block content %}
+
+  <div id="popup-video">
+    <div id="close">+</div>
+    <iframe style="" src="https://www.youtube.com/embed/{{link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+
+  <div class="thumbnail">
+    <i class="fa fa-play-circle fa-5x" id="play-btn" style="color: #eee; cursor: pointer;" onMouseOver="this.style.color='#ff0000'" onMouseOut="this.style.color='#eee'"></i>
+    <img src="{{movie.thumbnail_img.url}}">
+  </div>
+
+
+  <div class="row">
+
+    <div class="col-md-8 description text-left">
+      <h1 class="text-uppercase">{{movie.name}}</h1>
+      <br><br>
+      <p class="desc">{{movie.desc}}</p>
+      <br><br>
+      <p><b class="text-uppercase">Cast : </b>{{movie.cast}}</p>
+
+    </div>
+
+    <div class="col-md-4 poster text-left">
+      <div>
+        <img src="{{movie.img.url}}">
+
+        <form action="{% url 'viewShows' movie.name %}" method="post">
+          {% csrf_token %}
+            <input type="hidden" name="hall" value="{{hall}}">
+            <input type="submit" class="btn btn-block btn-outline-primary" value="Book Now">
+        </form>
+
+        <!-- <a href="{% url 'viewShows' movie.name %}" class="btn btn-outline-primary">Book Now</a> -->
+      </div>
+
+    </div>
+
+  </div>
+
+{% endblock %}
+
+{% block script %}
+  <script src="{% static '/js/movieInfo.js' %}"></script>
+{% endblock %}

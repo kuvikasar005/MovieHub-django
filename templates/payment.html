@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  <title>Payment</title>
+{% endblock %}
+
+{% block content %}
+<h1>PAYMENT</h1>
+
+<div class="pay-container text-center">
+
+
+
+
+  <div class="pay-form ml-auto mr-auto text-left">
+
+    <h3 class="text-center text-danger">Payment method : Card</h3>
+    <form autocomplete="off" action="{% url 'book' %}" method="post">
+      {% csrf_token %}
+
+      <input type="hidden" name="showId" value="{{showId}}">
+      <input type="hidden" name="amount" value="{{amount}}">
+      <input type="hidden" name="seats" value="{{seats}}">
+
+      <label>Name on Card</label>
+      <input type="text" name="name" required="">
+      <label>Card Number</label>
+      <input class="pay-logo" type="text" style="background: url({% static '/images/visa.png' %}) no-repeat 507px 5px;"
+      placeholder="0000-0000-0000-0000" onfocus="this.placeholder = '';"
+      onblur="if (this.placeholder == '') {this.placeholder = '0000-0000-0000-0000';}"
+      required="" minlength="16" maxlength="16">
+      <div class="form-row">
+        <div class="col">
+          <label>Expiration</label>
+          <select>
+            <option>Jan</option>
+            <option>Feb</option>
+            <option>Mar</option>
+            <option>Apr</option>
+            <option>May</option>
+            <option>June</option>
+            <option>July</option>
+            <option>Aug</option>
+            <option>Sept</option>
+            <option>Oct</option>
+            <option>Nov</option>
+            <option>Dec</option>
+          </select>
+          <select>
+            <option>2020</option>
+            <option>2021</option>
+            <option>2022</option>
+            <option>2023</option>
+            <option>2024</option>
+            <option>2025</option>
+
+          </select>
+        </div>
+        <div class="col">
+          <label>CVV</label>
+          <input type="number" name="cvv" placeholder="000" onfocus="this.placeholder = '';"
+          onblur="if (this.placeholder == '') {this.placeholder = '000';}" required="" minlength="3" maxlength="3">
+        </div>
+      </div>
+
+
+      <br>
+      <input type="submit" class="btn btn-warning" value="Pay">
+    </form>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

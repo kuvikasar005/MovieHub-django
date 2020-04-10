@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<style media="screen">
+  .link-container{
+    margin-top: 2vh;
+    width: 80%;
+
+  }
+  .back-link{
+    margin-left: 8vw;
+    margin-right: 8.5vw;;
+  }
+</style>
+  <title>Profile</title>
+{% endblock %}
+
+{% block content %}
+
+  <h1>PROFILE</h1>
+
+  <div class="profile-form-wrapper">
+    <img src="{% static '/images/user.png' %}">
+
+    <form action="{% url 'editProfile' %}" method="post" class="row" autocomplete="off">
+      {% csrf_token %}
+      <label class="col-sm-5 text-right">First Name</label>
+      <input class="col-sm-5 text-left" type="text" name="fname" value="{{user.first_name}}">
+      <label class="col-sm-5 text-right">Last Name</label>
+      <input class="col-sm-5 text-left" type="text" name="lname" value="{{user.last_name}}">
+      <label class="col-sm-5 text-right">Email</label>
+      <input class="col-sm-5 text-left" type="email" name="email" value="{{user.email}}">
+
+      <div class="text-left link-container">
+        <a href="/profile/" class="btn btn-lg btn-info back-link">Go Back</a>
+        <input class="btn btn-lg btn-warning ml-auto mr-auto" style="margin-top: 0;" type="submit" value="Update">
+      </div>
+
+
+    </form>
+
+
+  </div>
+
+{% endblock %}

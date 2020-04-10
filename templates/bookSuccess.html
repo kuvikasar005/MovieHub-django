@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  <title>Ticket</title>
+{% endblock %}
+
+{% block content %}
+
+  <h1>Booking Success</h1>
+
+  <div class="msg">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <p class="lead">Your Ticket is successfully Booked. Your <b>TicketId is {{id}}</b>. We have mailed you a copy of your ticket. Please carry a screenshot of this webpage or the email when going for movie.</p>
+        <a href="/home/" class="btn btn-primary">Back to Home</a>
+      </div>
+    </div>
+
+  </div>
+
+{% endblock %}

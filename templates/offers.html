@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  <title>Offers</title>
+{% endblock %}
+
+{% block content %}
+
+  <img class="wave" src="{% static '/images/wave.png' %}">
+  <h1>OFFERS</h1>
+
+  <div class="offer-table-wrapper">
+    <table class="table table-hover table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Promo Code</th>
+          <th scope="col">Offer</th>
+          <th scope="col">Expiry Date</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for offer in offers %}
+        <tr>
+          <th scope="row">{{offer.promoCode}}</th>
+          <td>{{offer.desc}}</td>
+          <td>{{offer.expiryDate}}</td>
+        </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+
+  </div>
+
+{% endblock %}

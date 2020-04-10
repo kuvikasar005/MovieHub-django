@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  <title>Home</title>
+{% endblock %}
+
+{% block content %}
+
+  <!-- <img class="wave" src="{% static '/images/wave.png' %}"> -->
+  <!-- <img class="shade-background" src="{% static '/images/bg.png' %}"> -->
+  <!-- <img class="movie-background" src="{% static '/images/movie.svg' %}"> -->
+
+  <div class="row right-wrapper">
+    <a class="col-lg-4 col-md-4" href="/profile/">
+      <div>
+        <img src="{% static '/images/user.png' %}" width="120" height="120">
+        <h3>Profile</h3>
+      </div>
+    </a>
+    <a class="col-lg-4 col-md-4" href="{% url 'viewMovies' %}">
+      <div>
+        <img src="{% static '/images/movie3.webp' %}" width="140" height="140">
+        <h3 class="collection" style="left: -3px;">Movies</h3>
+      </div>
+    </a>
+    <a class="col-lg-4 col-md-4" href="/hall/">
+      <div>
+        <img src="{% static '/images/hall2.png' %}" width="120" height="120">
+        <h3>Halls</h3>
+      </div>
+    </a>
+    <a class="col-lg-4 col-md-4" href="/offer/">
+      <div>
+        <img src="{% static '/images/offer8.png' %}" width="120" height="120">
+        <h3>Offers</h3>
+      </div>
+    </a>
+    <a class="col-lg-4 col-md-4" href="{% url 'orderHistory' %}">
+      <div>
+        <img src="{% static '/images/history2.png' %}" width="120" height="120">
+        <h3>Booking History</h3>
+      </div>
+    </a>
+  </div>
+{% endblock %}

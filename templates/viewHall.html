@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  <style media="screen">
+
+    .hall-search-form{
+      margin-top: 5vh;
+    }
+
+    .hall-search-form input[type="text"]{
+      background: none;
+      outline: none;
+      border: none;
+      border-bottom: 2px solid #fff;
+      margin-bottom: 2vh;
+      color: #fff;
+      font-size: 19px;
+      width: 80%;
+      padding-left: 10px;
+    }
+    
+  </style>
+  <title>Hall</title>
+{% endblock %}
+
+{% block search %}
+
+<form class="hall-search-form" action="" method="get" autocomplete="off">
+
+
+  {{hallFilter.form.name}}
+  {{hallFilter.form.address}}
+  <br><br>
+  <button type="submit" class="btn btn-primary">Search</button>
+
+</form>
+
+{% endblock %}
+
+{% block content %}
+
+  <h1>Halls</h1>
+
+  {% for hall in halls %}
+  <a href="{% url 'viewMoviesByHall' hall.name %}" class="hall-link">
+    <div class="row hall-wrapper">
+
+
+      {% if forloop.counter|divisibleby:2 %}
+      <div class="col-sm-8 text-right">
+        <h2 class="hallname">{{hall.name}}</h2>
+        <p>{{hall.address}}</p>
+        <p>{{hall.contactNumber}}</p>
+        <p>{{hall.email}}</p>
+      </div>
+      <img src="{{hall.img.url}}" class="col-sm-3" alt="...">
+      {% else %}
+      <img src="{{hall.img.url}}" class="col-sm-3" alt="...">
+      <div class="col-sm-8 text-left">
+        <h2 class="hallname">{{hall.name}}</h2>
+        <p>{{hall.address}}</p>
+        <p>{{hall.contactNumber}}</p>
+        <p>{{hall.email}}</p>
+      </div>
+      {% endif %}
+
+
+
+
+    </div>
+
+  </a>
+    {% endfor %}
+
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+  var form_fields = document.getElementsByTagName('input')
+
+  form_fields[0].placeholder='Name'
+  form_fields[1].placeholder='Address'
+
+
+    // for(var field in form_fields){
+    //   form_fields[field].className += ' input '
+    // }
+</script>
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  <title>Order Summary</title>
+{% endblock %}
+
+{% block content %}
+
+<h1>ORDER SUMMARY</h1>
+<div class="order-summary-table-wrapper">
+  <table class="table table-hover table-bordered">
+
+    <tbody>
+      <tr>
+        <th class="table-secondary">MOVIE</th>
+        <td>{{show.movie.name}}</td>
+      </tr>
+      <tr>
+        <th class="table-secondary">HALL</th>
+        <td>{{show.hall.name}}</td>
+      </tr>
+      <tr>
+        <th class="table-secondary">SEATS</th>
+        <td>{{seats}}</td>
+      </tr>
+      <tr>
+        <th class="table-secondary">SHOW DATE</th>
+        <td>{{show.showDate}}</td>
+      </tr>
+      <tr>
+        <th class="table-secondary">SHOW TIME</th>
+        <td>{{show.startTime}}</td>
+      </tr>
+      <tr>
+        <th class="table-secondary">TICKET PRICE</th>
+        <td>Rs.{{show.price}}</td>
+      </tr>
+      <tr>
+        <th class="table-secondary">PRICE TO PAY</th>
+        <td>Rs.{{amount}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<form action="{% url 'pay' %}" method="post">
+  {% csrf_token %}
+  <input type="hidden" name="showId" value="{{show.id}}">
+  <input type="hidden" name="amount" value="{{amount}}">
+  <input type="hidden" name="seats" value="{{seats}}">
+  <input type="submit" class="btn btn-lg btn-warning" name="" value="Proceed To Pay">
+</form>
+
+
+
+{% endblock %}

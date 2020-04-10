@@ -1,0 +1,395 @@
+{% load static %}
+
+/*base*/
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+.left-container {
+  background-color: #1c1c1c;
+}
+
+.left-container>div {
+  color: white;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  text-align: center;
+}
+
+.left-container h3 {
+  padding-top: 3vh;
+  padding-bottom: 6vh;
+  text-transform: uppercase;
+}
+
+.right-container {
+  text-align: center;
+  padding-left: 0;
+}
+
+.wave{
+position: fixed;
+left: 16.6vw;
+height: 100%;
+z-index: -2;
+}
+
+.shade-background{
+  position: fixed;
+  left: 27vw;
+  height: 100%;
+  z-index: -2;
+}
+
+
+ .movie-background{
+  position: fixed;
+  width: 30vw;
+  height: 100%;
+  left: 40vw;
+  opacity: 0.6;
+  z-index: -1;
+}
+
+
+.right-container>h1 {
+  text-transform: uppercase;
+  text-align: center;
+  /*color: #E4E9FD;*/
+  font-size: 60px;
+  font-weight: bold;
+  margin: 3rem auto;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.main-container {
+  height: 100vh;
+  margin: 0;
+}
+
+.sidebar-logo {
+  width: 150px;
+  height: 150px;
+  border-radius: 60%;
+  margin-bottom: 2rem;
+}
+
+.home-btn {
+  position: absolute;
+  bottom: 8rem;
+}
+
+.register-btn, .login-home-btn {
+  position: absolute;
+  bottom: 5rem;
+}
+
+.login-btn, .logout-btn {
+  position: absolute;
+  bottom: 2rem;
+}
+
+/*home page specific*/
+#scroller {
+  padding: 0;
+}
+
+.scrolling-posters {
+  width: 100%;
+  height: 85vh;
+  text-align: right;
+}
+
+.card {
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+  margin-left: 6rem;
+  margin-bottom: 2rem;
+}
+
+.card img {
+  height: 16rem;
+}
+
+/*specific to customer home*/
+.right-wrapper a {
+  text-decoration: none;
+  color: #293462;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+.right-wrapper a img {
+  transition-property: transform;
+  transition-duration: 2s;
+}
+
+.right-wrapper a img:hover {
+  transform: rotateY(360deg);
+}
+
+/*specific to offer page*/
+.offer-table-wrapper {
+  padding-left: 9vw;
+  padding-right: 9vw;
+}
+
+/*specific to book history*/
+.book-history-table-wrapper {
+  padding-left: 9vw;
+  padding-right: 9vw;
+}
+
+/*specicif to hall page*/
+
+/* .hall-search-form input[type="text"]{
+  margin-bottom: 2vh;
+
+} */
+
+.hall-link{
+  color: black;
+  text-decoration: none;
+}
+
+.hall-link:hover{
+  color: black;
+  text-decoration: none;
+}
+
+.hall-wrapper {
+  padding-left: 4vw;
+  margin-bottom: 4vh;
+}
+
+.hallname{
+  text-transform: uppercase;
+}
+
+.hall-wrapper img {
+  width: 40vw;
+  height: 30vh;
+}
+
+.hall-wrapper div {
+  padding: 4vh;
+}
+
+/*specific to customer profile*/
+.profile-form-wrapper {
+  padding-left: 15vw;
+  padding-right: 15vw;
+}
+
+.profile-form-wrapper img {
+  width: 5vw;
+  height: 8vh;
+  margin-bottom: 6vh;
+}
+
+.profile-form-wrapper form label {
+  font-size: 24px;
+  font-weight: 500;
+  padding-right: 9vw;
+  margin-bottom: 2rem;
+}
+
+.profile-form-wrapper form input[type="text"], .profile-form-wrapper form input[type="email"] {
+  border: none;
+  outline: none;
+  background: none;
+  border-bottom: 2px solid;
+  padding-left: 0;
+  font-size: 18px;
+  margin-bottom: 2rem;
+  color: #1c1c1c;
+}
+
+.profile-form-wrapper input[type="submit"] {
+  margin-top: 2vh;
+}
+
+/*specific to movie info*/
+.thumbnail {
+  position: relative;
+  width: 100%;
+  height: 40vh;
+}
+
+.thumbnail i {
+  color: #eee;
+  cursor: pointer;
+  position: absolute;
+  top: 35%;
+  left: 45%;
+}
+
+.thumbnail>img {
+  width: 100%;
+  height: 40vh;
+}
+
+.description {
+  padding-left: 4rem;
+  padding-top: 2rem;
+}
+
+.poster>div {
+  position: absolute;
+  right: 9vw;
+  bottom: 12vh;
+}
+
+.poster img {
+  width: 13vw;
+  display: block;
+  margin-bottom: 3vh;
+}
+
+.poster a {
+  width: 13vw;
+}
+
+#popup-video {
+  display: none;
+}
+
+#popup-video iframe {
+  width: 95vw;
+  height: 90vh;
+}
+
+#close {
+  font-size: 50px;
+  color: red;
+  cursor: pointer;
+  transform: rotate(45deg);
+  position: absolute;
+  right: 4vw;
+}
+
+/*specifi to movieHall or shows*/
+.day-btn-container {
+  width: 20vw;
+  margin-left: 8vw;
+  padding-right: 2vw;
+  border-bottom: 3px solid #1c1c1c;
+}
+
+.show-table-wrapper {
+  padding-left: 8vw;
+  padding-right: 9vw;
+  padding-top: 5vh;
+}
+
+.show-table-wrapper input[type="text"] {
+  background: none;
+  outline: none;
+}
+
+#tomorrow, #nextday {
+  display: none;
+}
+
+/*specific to order summary*/
+.order-summary-table-wrapper {
+  padding-left: 20vw;
+  padding-right: 20vw;
+  margin-bottom: 7vh;
+  padding-top: 3vh;
+}
+
+/*specific to payment*/
+.pay-form {
+  background-color: #fff;
+  box-shadow: 0 0 2px 1px #d3d3d3;
+  width: 40%;
+  padding: 3rem 2rem;
+}
+
+.pay-form h3 {
+  font-weight: 400;
+  margin-bottom: 3vh;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+.pay-form form label {
+  display: block;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-top: 2vh;
+}
+
+.pay-form form input[type="text"], .pay-form form input[type="number"] {
+  width: 100%;
+  margin-bottom: 1vh;
+  padding: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid #e7ebee;
+  outline: none;
+  color: #ccc;
+  border-radius: 5px;
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+}
+
+.pay-form form input[type="text"]:hover, .pay-form form input[type="number"]:hover {
+  border: 1px solid #B3E03F;
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+}
+
+.pay-form ::placeholder{
+		color: #1c1c1c;
+		opacity: 0.3;
+}
+
+input.pay-logo {
+  padding: 8px 45px 8px 8px !important;
+  /* background: url({% static '/images/visa.png' %}) no-repeat 507px 5px; */
+}
+
+.pay-form select {
+  width: 35%;
+  margin-right: 1vw;
+  background: none;
+  padding: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid #e7ebee;
+  outline: none;
+  font-weight: 500;
+  border-radius: 5px;
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+}
+
+.pay-form input[type="submit"] {
+  padding: 1vh 2vw;
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+/*specific to book success*/
+.msg {
+  padding-left: 6vw;
+  padding-right: 6vw;
+  margin-top: 10vh;
+}

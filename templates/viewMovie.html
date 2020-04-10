@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<style media="screen">
+
+  .hall-search-form{
+    margin-top: 5vh;
+  }
+
+  .hall-search-form input[type="text"]{
+    background: none;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #fff;
+    margin-bottom: 2vh;
+    color: #fff;
+    font-size: 19px;
+    width: 80%;
+    padding-left: 10px;
+  }
+
+</style>
+  <title>Movies</title>
+{% endblock %}
+
+{% block search %}
+
+<form class="hall-search-form" action="" method="get" autocomplete="off">
+
+
+  {{movieFilter.form.name}}
+  {{movieFilter.form.desc}}
+  {{movieFilter.form.cast}}
+
+  <br><br>
+  <button type="submit" class="btn btn-primary">Search</button>
+
+</form>
+
+{% endblock %}
+
+{% block content %}
+  <h1>MOVIES</h1>
+
+  <div class="row">
+
+    {% for movie in movies %}
+    <div class="card col-sm-12 col-md-3 col-lg-3">
+      <img src="{{movie.img.url}}" class="card-img-top" alt="..." style="height: 43vh;">
+      <div class="card-body">
+        <h5 class="card-title">{{movie.name}}</h5>
+        <p class="card-text">{{movie.desc}}</p>
+        <form action="{% url 'movieInfo' movie.id %}" method="post">
+          {% csrf_token %}
+            <input type="hidden" name="hall" value="{{hall}}">
+            <input type="submit" class="btn btn-warning" value="View More">
+        </form>
+        <!-- <a href="{% url 'movieInfo' movie.id %}" class="btn btn-warning">View More</a> -->
+      </div>
+    </div>
+    {% endfor %}
+
+
+  </div>
+  <!-- Row closed -->
+
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+  var form_fields = document.getElementsByTagName('input')
+
+  form_fields[0].placeholder='Name'
+  form_fields[1].placeholder='Description'
+  form_fields[2].placeholder='Cast'
+
+    // for(var field in form_fields){
+    //   form_fields[field].className += ' input '
+    // }
+</script>
+
+{% endblock %}

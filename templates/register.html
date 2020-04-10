@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="{% static '/css/login.css' %}">
+  <title>Register</title>
+{% endblock %}
+
+{% block content %}
+<img class="wave" src="{% static '/images/wave.png' %}">
+
+<div class="row">
+  <div class="col-md-3 left"></div>
+
+  <div class="col-md-4 center">
+    <img class="bg-phone" src="{% static '/images/bg.svg' %}">
+  </div>
+
+  <div class="col-md-5 right">
+
+    <div class="login-content">
+      <form action="/register/" method="post" autocomplete="off" >
+        {% csrf_token %}
+        <input type="hidden" name="next" value="/home/">
+        <img src="{% static '/images/avatar.svg' %}">
+        <h2 class="title">Join Us</h2>
+
+        <div class="input-div one">
+          <div class="i">
+            <i class="fas">F</i>
+          </div>
+          <div class="div">
+            <h5>First Name</h5>
+            <input type="text" class="input" name="fname" required="">
+          </div>
+        </div>
+
+        <div class="input-div one">
+          <div class="i">
+            <i class="fas">L</i>
+          </div>
+          <div class="div">
+            <h5>Last Name</h5>
+            <input type="text" class="input" name="lname" required="">
+          </div>
+        </div>
+
+        <div class="input-div one">
+          <div class="i">
+            <i class="fa fa-user"></i>
+          </div>
+          <div class="div">
+            <h5>Username</h5>
+            <input type="text" class="input" name="uname" required="">
+          </div>
+        </div>
+
+        <div class="input-div one">
+          <div class="i">
+            <i class="fa fa-envelope"></i>
+          </div>
+          <div class="div">
+            <h5>Email</h5>
+            <input type="email" class="input" name="email" required="">
+          </div>
+        </div>
+
+        <div class="input-div pass">
+          <div class="i">
+            <i class="fa fa-lock"></i>
+          </div>
+          <div class="div">
+            <h5>Password</h5>
+            <input type="password" class="input" name="password1" required="">
+          </div>
+        </div>
+
+        <div class="input-div pass">
+          <div class="i">
+            <i class="fa fa-lock"></i>
+          </div>
+          <div class="div">
+            <h5>Confirm Password</h5>
+            <input type="password" class="input" name="password2" required="">
+          </div>
+        </div>
+
+        <a class="forget-pwd" href="#">Forgot Password?</a>
+        <input type="submit" class="signin-btn" value="Register">
+      </form>
+    </div>
+    <br>
+
+    {% for message in messages %}
+    <h4 class="text-danger text-left"><b>Note : </b>{{message}}</h4>
+    {% endfor %}
+
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block script %}
+  <script type="text/javascript" src="{% static '/js/login.js' %}"></script>
+{% endblock %}

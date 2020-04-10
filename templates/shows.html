@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<style media="screen">
+
+  .hall-search-form{
+    margin-top: 5vh;
+  }
+
+  .hall-search-form input[type="text"]{
+    background: none;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #fff;
+    margin-bottom: 2vh;
+    color: #fff;
+    font-size: 19px;
+    width: 80%;
+    padding-left: 10px;
+  }
+
+</style>
+<title>Shows</title>
+
+{% endblock %}
+
+{% block search %}
+
+<form class="hall-search-form" method="get" autocomplete="off">
+
+
+  {{showFilter.form.hall}}
+
+
+  <br><br>
+  <button type="submit" class="btn btn-primary">Search</button>
+
+</form>
+
+{% endblock %}
+
+{% block content %}
+
+<h1>{{movie}}</h1>
+<div class="day-btn-container text-left">
+  <button class="btn btn-outline-dark active mt-5 mr-2" id="today-btn">Today</button>
+  <button class="btn btn-outline-dark mt-5 mr-2" id="tomorrow-btn">Tomorrow</button>
+  <button class="btn btn-outline-dark mt-5 mr-2" id="nextday-btn">Next Day</button>
+  <br><br>
+</div>
+
+<section id="today">
+  <div class="show-table-wrapper">
+    <table class="table table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Hall Name</th>
+          <th scope="col">Show Time</th>
+          <th scope="col">No of Seats</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for show in today %}
+        <tr>
+          <td>{{show.hall.name}}</td>
+          <td>{{show.startTime}}</td>
+          <td>
+            <form action="{% url 'orderSummary' %}" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="path" value="{{request.path}}">
+              <input type="hidden" name="showId" value="{{show.id}}" >
+              <input type="number" name="numofseat" required="">
+          </td>
+          <td><input type="submit" class="btn btn-warning" name="proceed" value="Book"></td>
+          </form>
+        </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+</section>
+
+<section id="tomorrow">
+  <div class="show-table-wrapper">
+    <table class="table table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Hall Name</th>
+          <th scope="col">Show Time</th>
+          <th scope="col">No of Seats</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+
+          {% for show in tomorrow %}
+          <tr>
+            <td>{{show.hall.name}}</td>
+            <td>{{show.startTime}}</td>
+            <td>
+              <form action="{% url 'orderSummary' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="path" value="{{request.path}}">
+                <input type="hidden" name="showId" value="{{show.id}}" >
+                <input type="number" name="numofseat" required="">
+            </td>
+            <td><input type="submit" class="btn btn-warning" name="proceed" value="Book"></td>
+            </form>
+          </tr>
+          {% endfor %}
+
+      </tbody>
+    </table>
+</section>
+
+<section id="nextday">
+  <div class="show-table-wrapper">
+    <table class="table table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Hall Name</th>
+          <th scope="col">Show Time</th>
+          <th scope="col">No of Seats</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for show in nextDay %}
+        <tr>
+          <td>{{show.hall.name}}</td>
+          <td>{{show.startTime}}</td>
+          <td>
+            <form action="{% url 'orderSummary' %}" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="path" value="{{request.path}}">
+              <input type="hidden" name="showId" value="{{show.id}}">
+              <input type="number" name="numofseat" required="">
+          </td>
+          <td><input type="submit" class="btn btn-warning" name="proceed" value="Book"></td>
+          </form>
+        </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+</section>
+
+{% for message in messages %}
+<h5 class="text-danger text-center"><b>Note : </b>{{message}}</h5>
+{% endfor %}
+
+{% endblock %}
+
+{% block script %}
+<script src="{% static '/js/shows.js' %}"></script>
+{% endblock %}
+
+<script type="text/javascript">
+  var form_fields = document.getElementsByTagName('input')
+
+  form_fields[0].placeholder='Hall'
+
+
+    // for(var field in form_fields){
+    //   form_fields[field].className += ' input '
+    // }
+</script>
